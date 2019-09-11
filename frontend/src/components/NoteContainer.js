@@ -112,9 +112,7 @@ class NoteContainer extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
 
-    const searchedNotes = this.state.originalNoteArray.filter(note => note.body.includes(this.state.search))
-    console.log(searchedNotes)
-
+    const searchedNotes = this.state.originalNoteArray.filter(note => note.body.includes(value))
     this.setState({ noteArray: searchedNotes })
   }
 

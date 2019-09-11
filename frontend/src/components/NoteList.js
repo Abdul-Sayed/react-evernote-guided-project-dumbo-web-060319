@@ -12,7 +12,6 @@ const NoteList = (props) => {
     if (note1.updated_at < note2.updated_at) return -1;
     return 0;
   })
-  console.log(copiedNoteList)
 
   const renderNotes = copiedNoteList.reverse().map(note => {
     return <
