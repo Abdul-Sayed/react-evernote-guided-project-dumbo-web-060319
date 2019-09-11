@@ -1,5 +1,5 @@
 class Api::V1::NotesController < ApplicationController
-  before_action :set_note, only: [:show,:update,:destroy]
+  before_action :find_note, only: [:show, :update, :destroy]
 
   def index
     notes = Note.all
@@ -19,7 +19,7 @@ class Api::V1::NotesController < ApplicationController
   def destroy
     noteId = @note.id
     @note.destroy
-    render json: {message:"Zap! Note deleted", noteId:noteId}
+    render json: { message: "Zap! Note deleted", noteId: noteId }
   end
 
   def show
@@ -27,11 +27,12 @@ class Api::V1::NotesController < ApplicationController
   end
 
   private
-  def note_params
-    params.permit(:body, :title, :user_id)
+
+  def find_note
+    @note = Note.find(params[:id])
   end
 
-  def set_note
-    @note = Note.find(params[:id])
+  def note_params
+    params.permit(:body, :title, :user_id)
   end
 end

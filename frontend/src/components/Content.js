@@ -1,27 +1,49 @@
 import React, { Component } from 'react';
 import NoteEditor from './NoteEditor';
 import NoteViewer from './NoteViewer';
-import Instructions from './Instructions';
 
-/*
-  Advice: If you cannot figure out how to get this component to work,
-          move the div and renderContent up into NoteContainer and
-          try to get it to work in the parent first.
-          Then complete the rest of your app before attempting to
-          refactor to get this Content component to work.
-*/
+
 class Content extends Component {
+
+  state = {
+    isEditing: false
+  }
+
+  editNote = () => {
+    console.log('Edit Note')
+    this.setState({ isEditing: !this.state.isEditing })
+  }
+
+
   renderContent = () => {
-    if (false) {
-      return <NoteEditor />;
-    } else if (false) {
-      return <NoteViewer />;
-    } else {
-      return <Instructions />;
-    }
+    return this.state.isEditing ?
+      <NoteEditor
+
+        note={this.props.title === "Click To Add Note Title" ?
+          {
+            "title": "",
+            "body": ""
+          } :
+          this.props
+        }
+
+        handleChange={this.props.handleChange}
+        handleSubmit={(event) => {
+          this.editNote();
+          this.props.handleSubmit(event);
+        }}
+        handleClick={() => {
+          this.editNote()
+        }}
+      /> :
+      <NoteViewer
+        note={this.props}
+        handleClick={this.editNote}
+      />
   }
 
   render() {
+
     return (
       <div className='master-detail-element detail'>
         {this.renderContent()}

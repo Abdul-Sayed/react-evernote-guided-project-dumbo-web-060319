@@ -1,9 +1,13 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: [:show,:update,:destroy]
+  before_action :find_user, only: [:show, :update, :destroy]
 
   def index
     users = User.all
     render json: users, status: 200
+  end
+
+  def show
+    render json: @user, status: 200
   end
 
   def create
@@ -19,19 +23,16 @@ class Api::V1::UsersController < ApplicationController
   def destroy
     userId = @user.id
     @user.destroy
-    render json: {message:"Zap! user deleted", userId:userId}
-  end
-
-  def show
-    render json: @user, status: 200
+    render json: { message: "Zap! user deleted", userId: userId }
   end
 
   private
-  def user_params
-    params.permit(:name)
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(params[:id])
+  def user_params
+    params.permit(:name)
   end
 end
