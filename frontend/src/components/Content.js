@@ -10,7 +10,6 @@ class Content extends Component {
   }
 
   editNote = () => {
-    console.log('Edit Note')
     this.setState({ isEditing: !this.state.isEditing })
   }
 

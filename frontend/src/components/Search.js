@@ -6,6 +6,7 @@ const Search = (props) => {
       <input
         id="search-bar"
         type="text"
+        autoComplete="off"
         placeholder="Search Notes"
         name="search"
         value={props.search}

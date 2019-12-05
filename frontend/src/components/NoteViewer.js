@@ -10,7 +10,7 @@ const NoteViewer = (props) => {
 
       {(props.note.title).length === 0 ?
         <h2>Add new note <br></br> Or click on existing note to edit..</h2> :
-        <button onClick={props.handleClick}>Edit</button>}
+        <button onClick={props.handleClick}>Click to Edit</button>}
 
     </Fragment>
   );

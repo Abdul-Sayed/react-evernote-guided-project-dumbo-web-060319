@@ -7,7 +7,6 @@ const NoteList = (props) => {
 
 
   copiedNoteList.sort((note1, note2) => {
-    // note1.updated_at - note2.updated_at
     if (note1.updated_at > note2.updated_at) return 1;
     if (note1.updated_at < note2.updated_at) return -1;
     return 0;

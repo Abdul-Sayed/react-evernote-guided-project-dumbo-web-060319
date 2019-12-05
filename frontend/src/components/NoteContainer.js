@@ -41,14 +41,14 @@ class NoteContainer extends Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "title": "Click To Add Note Title",
-        "body": "Click To Add Note Body"
+        "title": "Click To Edit Note",
+        "body": ""
       })
     })
       .then(response => response.json())
       .then(newNote => {
 
-        if (this.state.noteArray.slice(0, 1)[0].title === "Click To Add Note Title") {
+        if (this.state.noteArray.slice(0, 1)[0].title === "Click To Edit Note") {
           console.log('Adding note disabled. Edit Existing New Note')
           this.setState({ addDisabled: true })
           return

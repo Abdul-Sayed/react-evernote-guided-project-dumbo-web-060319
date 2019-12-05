@@ -69,6 +69,10 @@ div.sidebar button {
   width: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 button.add {
   all: unset;
   display: flex;
